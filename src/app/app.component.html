@@ -1,0 +1,19 @@
+<h1>Qr code</h1>
+
+<!-- <input type="text" placeholder="QR code Data" [(ngModel)]="qrData"> -->
+<textarea [(ngModel)]="qrData" rows="6" cols="20"></textarea>
+<br><br>
+
+<button (click)="CretaQrCode()"> Create Barcode</button><br><br>
+<!-- <button (click)="ScanQrCode()">Scane Code </button><br><br> -->
+
+
+<div *ngIf="createdCode">
+<ngx-qrcode [(value)]="createdCode" style="width: 100px;"></ngx-qrcode>
+
+<div>
+  <h5>values in qr Code:</h5>
+  {{createdCode}}</div>
+
+
+</div>
