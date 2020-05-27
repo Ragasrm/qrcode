@@ -6,18 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  qrData = null;
-  createdCode =null;
-  ScannedCode = null;
+  title = 'codescan';
 
-  title = 'qrcodeTask';
+  qrData = null;
+  createdCode = null;
 
 
 
   CretaQrCode() {
-    if(this.qrData === null) {
+    if (this.qrData === null) {
       alert('no data to print qr code');
-      return
+      return;
     }
     this.createdCode = this.qrData;
 
@@ -26,6 +25,26 @@ export class AppComponent {
   ScanQrCode() {
 
   }
+
+
+
+  qrResultString: string;
+  openScanner: boolean = false;
+
+  clearResult(): void {
+    this.qrResultString = null;
+  }
+
+  onCodeResult(resultString: string) {
+    this.qrResultString = resultString;
+    console.log(this.qrResultString);
+    this.openScanner = !this.openScanner;
+  }
+
+  toggleScanner() {
+    this.openScanner = !this.openScanner;
+  }
+
 
 
 

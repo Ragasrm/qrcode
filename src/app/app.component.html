@@ -1,11 +1,11 @@
-<h1>Qr code</h1>
+<h1>Qr code Generator and Reader</h1>
 
 <!-- <input type="text" placeholder="QR code Data" [(ngModel)]="qrData"> -->
 <textarea [(ngModel)]="qrData" rows="6" cols="20"></textarea>
 <br><br>
 
 <button (click)="CretaQrCode()"> Create Barcode</button><br><br>
-<!-- <button (click)="ScanQrCode()">Scane Code </button><br><br> -->
+
 
 
 <div *ngIf="createdCode">
@@ -17,3 +17,21 @@
 
 
 </div>
+
+
+<button (click)="toggleScanner()">{{openScanner ? 'Close' : 'Scan'}}</button>
+
+<zxing-scanner *ngIf="openScanner" (scanSuccess)="onCodeResult($event)"
+style="width: 50%; height: 50%;"></zxing-scanner>
+
+<section class="results" *ngIf="qrResultString">
+  <div>
+    <small>Result : </small>
+    <strong>{{ qrResultString }}</strong>
+  </div>
+  <button mat-icon-button (click)="clearResult()">&times;</button>
+</section>
+
+
+
+
